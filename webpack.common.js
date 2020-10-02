@@ -25,13 +25,13 @@ module.exports = {
         test: /\.scss$/,
         use: [
           {
-            loader: 'raw-loader',
+            loader: 'style-loader',
+          },
+          {
+            loader: 'css-loader',
           },
           {
             loader: 'sass-loader',
-            options: {
-              includePaths: [path.resolve(__dirname, 'node_modules')],
-            },
           },
         ],
       },
@@ -41,7 +41,18 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              outputPath: 'images',
+              outputPath: 'assets/images',
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(svg|eot|woff|woff2|ttf)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              outputPath: 'assets/fonts',
             },
           },
         ],

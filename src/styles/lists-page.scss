@@ -1,0 +1,103 @@
+.section-title{
+  text-align: center;
+  font-size: xx-large;
+}
+
+.restaurant-list {
+  display: grid;
+  grid-gap: 20px;
+  margin: 24px;
+  align-content: center;
+  justify-content: center;
+  .loading-placeholder {
+    font-size: x-large;
+    text-align: center;
+  }
+}
+
+.restaurant-item {
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  .item-photo {
+    img {
+      height: 300px;
+      object-fit: cover;
+      width: 100%;
+    }
+  }
+  .item-detail {
+    padding: 2em;
+    .item-title {
+      margin: 5px 0;
+      font-size: xx-large;
+      font-weight: bold;
+    }
+    .item-city {
+      font-weight: 600;
+      font-size: large;
+      margin: 5px 0;
+    }
+    .item-rating {
+      display: inline-flex;
+      margin: 5px 0;
+      i {
+        margin: auto 5px auto auto;
+        color: gold;
+      }
+      p {
+        margin: auto;
+        font-weight: 600;
+      }
+    }
+    .item-desc {
+      margin: 5px 0;
+      line-height: 1.5em;
+      max-height: 7.5em;
+      overflow: hidden;
+    }
+    .item-link {
+      display: inline-block;
+      width: 100%;
+      background-color: #111111;
+      text-decoration: none;
+      color: white;
+      padding: 1em;
+      margin-top: 2rem;
+      text-align: center;
+      font-weight: bold;
+      border: 5px solid #111111;
+      border-radius: 10px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    }
+    .item-link:hover {
+      background-color: white;
+      color: #111111;
+    }
+    .item-link:active {
+      background-color: #ccc;
+    }
+  }
+}
+
+.restaurant-item:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+@media screen and (min-width: 768px) {
+  .restaurant-list {
+    grid-template-columns: repeat(2, 1fr);
+    .loading-placeholder {
+      grid-column: 1 / 3;
+    }
+  }
+}
+
+@media screen and (min-width: 1025px){
+  .restaurant-list {
+    grid-template-columns: repeat(3, 1fr);
+    .loading-placeholder {
+      grid-column: 1 / 4;
+    }
+  }
+}
