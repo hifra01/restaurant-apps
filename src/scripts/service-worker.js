@@ -1,4 +1,5 @@
 /* eslint-disable no-restricted-globals,no-underscore-dangle */
+import 'regenerator-runtime/runtime';
 import { registerRoute } from 'workbox-routing';
 import { cleanupOutdatedCaches, precacheAndRoute } from 'workbox-precaching';
 import { NetworkFirst } from 'workbox-strategies';
