@@ -2,8 +2,7 @@ import RestaurantSource from '../../data/restaurant-source';
 import UrlParser from '../../routes/url-parser';
 import SubmitReview from '../../utils/submit-review';
 import createRestaurantDetail from '../templates/restaurant-detail';
-import {createFavoriteButtonTemplate} from "../templates/fav-button";
-import FavButtonInitiator from "../../utils/fav-button-initiator";
+import FavButtonInitiator from '../../utils/fav-button-initiator';
 
 const Detail = {
   async render() {
