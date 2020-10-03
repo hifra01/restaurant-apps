@@ -1,5 +1,5 @@
-import RestaurantSource from '../../data/restaurant-source';
-import IMAGE_URL from '../../globals/image-url';
+import createRestaurantItem from '../templates/restaurant-item';
+import FavoriteRestaurantIdb from '../../data/restaurant-idb';
 
 const Favorites = {
   async render() {
@@ -17,27 +17,15 @@ const Favorites = {
     const restaurantList = document.querySelector('.restaurant-list');
     const loading = document.querySelector('.loading-placeholder');
     try {
-      const data = await RestaurantSource.restaurantsList();
-      restaurantList.innerHTML = '';
-      data.forEach((restaurant) => {
-        restaurantList.innerHTML += `
-          <div class="restaurant-item">
-          <div class="item-photo">
-            <img src=${IMAGE_URL.SMALL + restaurant.pictureId} alt="${restaurant.name}">
-          </div>
-          <div class="item-detail">
-            <h3 class="item-title">${restaurant.name}</h3>
-            <p class="item-city">${restaurant.city}</p>
-            <div class="item-rating">
-              <i class="fas fa-star"></i>
-              <p>${restaurant.rating}/5</p>
-            </div>
-            <p class="item-desc">${restaurant.description}</p>
-            <a href="#/detail/${restaurant.id}" class="item-link">DETAIL</a>
-          </div>
-        </div>
-        `;
-      });
+      const data = await FavoriteRestaurantIdb.getAllRestaurants();
+      if (data.length > 0) {
+        restaurantList.innerHTML = '';
+        data.forEach((restaurant) => {
+          restaurantList.innerHTML += createRestaurantItem(restaurant);
+        });
+      } else {
+        loading.innerText = 'You haven\'t put any restaurant to your favorite list.';
+      }
     } catch (e) {
       loading.innerText = `Oops. Something's wrong. Please try again. Detail: ${e}`;
     }
