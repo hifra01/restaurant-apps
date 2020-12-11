@@ -2,7 +2,7 @@ import RestaurantSource from '../../data/restaurant-source';
 import UrlParser from '../../routes/url-parser';
 import SubmitReview from '../../utils/submit-review';
 import createRestaurantDetail from '../templates/restaurant-detail';
-import FavButtonInitiator from '../../utils/fav-button-initiator';
+import FavButtonPresenter from '../../utils/fav-button-presenter';
 
 const Detail = {
   async render() {
@@ -36,7 +36,7 @@ const Detail = {
       const restaurant = await RestaurantSource.restaurantDetail(url.id);
       detailContainer.innerHTML = createRestaurantDetail(restaurant);
 
-      await FavButtonInitiator.init({
+      await FavButtonPresenter.init({
         favButtonContainer: document.querySelector('#favButtonContainer'),
         restaurant,
       });

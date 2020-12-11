@@ -45,7 +45,7 @@ function createRestaurantDetail(restaurant) {
     <div class="review card">
       <h2>Review</h2>
       <div class="review__display">
-        ${restaurant.consumerReviews.map((review) => `
+        ${restaurant.customerReviews.map((review) => `
         <div class="review__display__item">
           <h3>${review.name}</h3>
           <p>${review.review}</p>
