@@ -3,6 +3,7 @@ import UrlParser from '../../routes/url-parser';
 import SubmitReview from '../../utils/submit-review';
 import createRestaurantDetail from '../templates/restaurant-detail';
 import FavButtonPresenter from '../../utils/fav-button-presenter';
+import FavoriteRestaurantIdb from '../../data/restaurant-idb';
 
 const Detail = {
   async render() {
@@ -38,6 +39,7 @@ const Detail = {
 
       await FavButtonPresenter.init({
         favButtonContainer: document.querySelector('#favButtonContainer'),
+        favoriteRestaurants: FavoriteRestaurantIdb,
         restaurant,
       });
     } catch (e) {

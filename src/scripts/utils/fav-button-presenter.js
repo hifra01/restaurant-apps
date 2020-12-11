@@ -1,10 +1,10 @@
-import FavoriteRestaurantIdb from '../data/restaurant-idb';
 import { createFavoriteRestaurantButtonTemplate, createUnfavoriteRestaurantButtonTemplate } from '../views/templates/fav-button';
 
 const FavButtonPresenter = {
-  async init({ favButtonContainer, restaurant }) {
+  async init({ favButtonContainer, favoriteRestaurants, restaurant }) {
     this.favButtonContainer = favButtonContainer;
     this.restaurant = restaurant;
+    this.favoriteRestaurants = favoriteRestaurants;
 
     await this.renderButton();
   },
@@ -20,7 +20,7 @@ const FavButtonPresenter = {
   },
 
   async isRestaurantExist(id) {
-    const restaurant = await FavoriteRestaurantIdb.getRestaurant(id);
+    const restaurant = await this.favoriteRestaurants.getRestaurant(id);
     return !!restaurant;
   },
 
@@ -29,7 +29,7 @@ const FavButtonPresenter = {
 
     const favButton = document.querySelector('#favButton');
     favButton.addEventListener('click', async () => {
-      await FavoriteRestaurantIdb.putRestaurant(this.restaurant);
+      await this.favoriteRestaurants.putRestaurant(this.restaurant);
       await this.renderButton();
     });
   },
@@ -39,7 +39,7 @@ const FavButtonPresenter = {
 
     const favButton = document.querySelector('#favButton');
     favButton.addEventListener('click', async () => {
-      await FavoriteRestaurantIdb.deleteRestaurant(this.restaurant.id);
+      await this.favoriteRestaurants.deleteRestaurant(this.restaurant.id);
       await this.renderButton();
     });
   },
