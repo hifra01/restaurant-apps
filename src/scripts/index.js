@@ -1,6 +1,8 @@
 import 'regenerator-runtime'; /* for async await transpile */
 import '@fortawesome/fontawesome-free/css/fontawesome.css';
 import '@fortawesome/fontawesome-free/css/solid.css';
+import 'lazysizes';
+import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 import '../styles/main.scss';
 import './components/app-bar';
 import './components/hero-jumbotron';

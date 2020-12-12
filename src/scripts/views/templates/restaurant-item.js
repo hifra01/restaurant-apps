@@ -4,7 +4,7 @@ function createRestaurantItem(restaurant) {
   return `
   <div class="restaurant-item">
     <div class="item-photo">
-      <img src=${IMAGE_URL.SMALL + restaurant.pictureId} alt="${restaurant.name}">
+      <img class="lazyload" data-src=${IMAGE_URL.SMALL + restaurant.pictureId} alt="${restaurant.name}">
     </div>
     <div class="item-detail">
       <h3 class="item-title">${restaurant.name}</h3>

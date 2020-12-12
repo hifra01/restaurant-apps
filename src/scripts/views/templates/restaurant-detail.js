@@ -4,7 +4,7 @@ function createRestaurantDetail(restaurant) {
   return `
     <div class="detail card">
       <div class="detail__image">
-        <img src="${IMAGE_URL.MEDIUM + restaurant.pictureId}" alt="${restaurant.name}">  
+        <img class="lazyload" data-src="${IMAGE_URL.MEDIUM + restaurant.pictureId}" alt="${restaurant.name}">  
       </div>
       <div class="detail__info">
         <h2 class="detail__info__name">${restaurant.name}</h2> 

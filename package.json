@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start-dev": "webpack-dev-server --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js",
+    "start-dev": "webpack-dev-server --config webpack.dev.js && node sharp.js",
+    "build": "webpack --config webpack.prod.js && node sharp.js",
     "test": "karma start",
     "lint": "eslint ./src",
     "e2e": "codeceptjs run --steps",
@@ -54,6 +54,7 @@
   },
   "dependencies": {
     "idb": "^5.0.6",
+    "lazysizes": "^5.2.2",
     "regenerator-runtime": "^0.13.5",
     "workbox-core": "^5.1.4",
     "workbox-expiration": "^5.1.4",
