@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 import FavButtonPresenter from '../../src/scripts/utils/fav-button-presenter';
 import FavoriteRestaurantIdb from '../../src/scripts/data/restaurant-idb';
 

@@ -1,17 +1,15 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { InjectManifest } = require('workbox-webpack-plugin');
 const ImageminWebpackPlugin = require('imagemin-webpack-plugin').default;
 const ImageminMozjpeg = require('imagemin-mozjpeg');
 const path = require('path');
-const webpack = require('webpack');
 
 module.exports = {
   entry: path.resolve(__dirname, 'src/scripts/index.js'),
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
   },
   module: {
     rules: [
@@ -50,17 +48,6 @@ module.exports = {
           },
         ],
       },
-      // {
-      //   test: /\.(png|jpe?g|gif)$/i,
-      //   use: [
-      //     {
-      //       loader: 'file-loader',
-      //       options: {
-      //         outputPath: 'assets/images',
-      //       },
-      //     },
-      //   ],
-      // },
       {
         test: /\.(svg|eot|woff|woff2|ttf)$/,
         use: [
@@ -75,11 +62,6 @@ module.exports = {
     ],
   },
   plugins: [
-    new webpack.IgnorePlugin({
-      resourceRegExp: /^\.\/assets$/,
-      contextRegExp: /styles$/,
-    }),
-    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'src/templates/index.html'),
       filename: 'index.html',

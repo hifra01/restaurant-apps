@@ -1,4 +1,4 @@
-import FavButtonPresenter from '../src/scripts/utils/fav-button-presenter';
+/* eslint-disable no-undef */
 import FavoriteRestaurantIdb from '../src/scripts/data/restaurant-idb';
 import * as TestFactories from './helpers/testFactories';
 
