@@ -8,7 +8,8 @@
     "build": "webpack --config webpack.prod.js",
     "test": "karma start",
     "lint": "eslint ./src",
-    "e2e": "codeceptjs run --steps"
+    "e2e": "codeceptjs run --steps",
+    "build-image": "node sharp.js"
   },
   "keywords": [],
   "author": "your_name <your.email@domain.com>",
@@ -40,7 +41,9 @@
     "node-sass": "^4.14.1",
     "puppeteer": "^5.5.0",
     "raw-loader": "^4.0.1",
+    "resolve-url-loader": "^3.1.2",
     "sass-loader": "^10.0.2",
+    "sharp": "^0.26.3",
     "style-loader": "^1.2.1",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.12",

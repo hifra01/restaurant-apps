@@ -5,6 +5,7 @@ const { InjectManifest } = require('workbox-webpack-plugin');
 const ImageminWebpackPlugin = require('imagemin-webpack-plugin').default;
 const ImageminMozjpeg = require('imagemin-mozjpeg');
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   entry: path.resolve(__dirname, 'src/scripts/index.js'),
@@ -27,29 +28,39 @@ module.exports = {
       },
       {
         test: /\.scss$/,
+        exclude: /node_modules/,
         use: [
           {
             loader: 'style-loader',
           },
           {
             loader: 'css-loader',
+            options: {
+              url: false,
+            },
+          },
+          {
+            loader: 'resolve-url-loader',
           },
           {
             loader: 'sass-loader',
-          },
-        ],
-      },
-      {
-        test: /\.(png|jpe?g|gif)$/i,
-        use: [
-          {
-            loader: 'file-loader',
             options: {
-              outputPath: 'assets/images',
+              sourceMap: true,
             },
           },
         ],
       },
+      // {
+      //   test: /\.(png|jpe?g|gif)$/i,
+      //   use: [
+      //     {
+      //       loader: 'file-loader',
+      //       options: {
+      //         outputPath: 'assets/images',
+      //       },
+      //     },
+      //   ],
+      // },
       {
         test: /\.(svg|eot|woff|woff2|ttf)$/,
         use: [
@@ -64,6 +75,10 @@ module.exports = {
     ],
   },
   plugins: [
+    new webpack.IgnorePlugin({
+      resourceRegExp: /^\.\/assets$/,
+      contextRegExp: /styles$/,
+    }),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'src/templates/index.html'),
